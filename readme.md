@@ -76,7 +76,7 @@ Amazon S3 存储桶 新增文件自动触发 AWS Lambda。Lambda 取 S3 文件�
     TopLeft：左上方
     TopRight：右上方
     
-![Lambda Env](./img/environment.jpg)
+![Lambda Env](./img/enviroment.jpg)
 
 
 ### 配置依赖的层（Pillow包）
