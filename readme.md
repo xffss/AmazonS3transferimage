@@ -76,6 +76,8 @@ Amazon S3 存储桶 新增文件自动触发 AWS Lambda。Lambda 取 S3 文件�
     TopLeft：左上方
     TopRight：右上方
     
+![Lambda Env](./img/environment.jpg)
+
 
 ### 配置依赖的层（Pillow包）
 
@@ -97,11 +99,21 @@ https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html
 
 ### 设置 S3 触发 Lambda
 * 设置 S3 触发 Lambda  
-在 Lambda 函数界面点击“添加触发器”，选择 S3，并选择 S3 桶，对 S3 ”新增“ 文件进行触发。  
+在 Lambda 函数界面点击“添加触发器”，选择 S3，并选择 S3 桶, 配置前缀"input/"，对 S3 ”新增“ 文件进行触发。  
   
+![source](./img/s3source.jpg)  
+
 ### 测试上传文件  
 尝试调整环境变量中各种参数：  
 * 上传 JPG 文件转换格式为 WebP, 
 * 保留原 JPG 格式，只改变大小为指定大小 640*640，保留纵横比  
 * 转换格式以及改变大小，并且不保持纵横比  
 * 添加水印
+
+在 S3 桶中，创建一个“input”目录，并上传图像文件到该目录中，查看该 S3 桶“output”目录下新输出的文件。  
+![source](./img/uploadfile.jpg)
+
+![output](./img/outputresult.jpg)
+
+
+
