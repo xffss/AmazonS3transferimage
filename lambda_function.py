@@ -196,8 +196,9 @@ def save_s3(bucket, key, body):
 
 # change prefix from input/ to output/ and change postfix
 def change_key(key, convert_postfix):
+    key_pre = os.path.splitext(key)[0].replace('input', 'output', 1)
     if not preserv_original_format:
-        key_new = key+convert_postfix
+        key_new = key_pre+convert_postfix
     else: 
         key_new = key_pre+os.path.splitext(key)[1]
     return key_new
@@ -211,8 +212,8 @@ def lambda_handler(event, context):
     img_org = load_s3(bucket, key)
     
     body = img_convert(img_org, convert_format)
-    # key_new = change_key(key, convert_postfix)
-    save_s3(bucket, key+'.new.jpg', body)
+    key_new = change_key(key, convert_postfix)
+    save_s3(bucket, key_new, body)
 
     return {
         'statusCode': 200,
